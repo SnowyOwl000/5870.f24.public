@@ -1,0 +1,144 @@
+% common preamble
+
+%\ifstandalone
+\ifshadedsectiontitles
+\usepackage[explicit]{titlesec}
+\fi
+% colors
+\usepackage{color}
+% a better margin than the default article
+\usepackage[margin=1in]{geometry}
+% for printing listings
+\usepackage{listings}
+% for algorithms
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% gotta have tikz
+\usepackage{tikz}
+
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,positioning}
+
+\usepackage{scrextend}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\usepackage{arev,tgadventor,tgcursor}
+%\usepackage{tex-gyre-math,tgadventor,tgcursor}
+\usepackage[semibold]{sourcecodepro}
+% use TeX Gyre Adventor as the default font
+\renewcommand{\rmdefault}{qag}
+% use TeX Gyre Cursor as the tt font
+%\renewcommand*{\ttdefault}{qcr}
+% sans serif is the base font
+\renewcommand*\familydefault{\sfdefault}
+
+% accented letters use a single glyph
+\usepackage[T1]{fontenc}
+% AMS math symbols and formatting
+\usepackage{amssymb,amsmath}
+\usepackage{amsthm}
+
+% formatting for problem numbers
+\makeatletter
+\newcommand{\problemnumber}[5]{\ifx\@empty#3\@empty%
+\ifx\@empty#2\@empty%
+\,[#1]\\%
+\else
+\,[#1#4#2]\\%
+\fi\else%
+\,[#1#4#2#5#3]\\%
+\fi%
+}
+\makeatother
+
+%\newcommand{\newsec}[1]{%
+%\ifstandalone%
+%\section{#1}%
+%\else%
+%\N{3}{0}{#1}.%
+%%@*3 {#1}.%
+%\fi%
+%}
+%\newcommand{\newsubsec}[1]{%
+%\ifstandalone%
+%\subsection{#1}%
+%\else%
+%\N{4}{0}{#1}.%
+%%@*4 {#1}.%
+%\fi%
+%}
+
+% bold tt font
+\newcommand\ttbf[1]{\texttt{\textbf{\large #1}}}
+
+% macro for section titles. creates a gray box across the page and displays
+% the section title in Large size with emphasis. Skips 12pt before and 3pt after
+%\newcommand{\sectiontitle}[1]{\vskip12pt\par\noindent\colorbox{gray!40}
+%{\parbox{\dimexpr\textwidth\relax}{\Large \emph{#1}}}\vskip3pt\par
+%\noindent}
+
+% fancier section titles, shaded for contrast
+\ifshadedsectiontitles
+\titleformat{\section}{\normalfont\Large}{}{0pt}{\colorbox{gray!40}
+{\parbox{\dimexpr\textwidth\relax}{\emph{#1}}}}[\vskip-6pt]
+\titleformat{\subsection}{\normalfont\Large}{}{0pt}{
+\parbox{\dimexpr\textwidth\relax}{$\triangleright$\emph{#1}}}[\vskip-6pt]
+\fi
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\newcommand\parend{\par\vskip12pt\noindent}
+
+% listings settings
+\lstset{
+language=C++,
+basicstyle=\ttfamily,
+    frame=tb, % draw a frame at the top and bottom of the code block
+numberstyle=\footnotesize\color[rgb]{0.205, 0.142, 0.73},
+commentstyle=\color[rgb]{0.026,0.4,0.095},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+  tabsize=4, % tab space width
+  %  showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+ %   commentstyle=\color{green}, % comment color
+    keywordstyle=\color{blue}, % keyword color
+ %   stringstyle=\color{red} % string color
+mathescape=true,
+}
+
+% common big Theta values
+\newcommand\consttime{$\Theta\left(1\right)$}
+\newcommand\lgntime{$\Theta\left(\lg n\right)$}
+\newcommand\ntime{$\Theta\left(n\right)$}
+\newcommand\nlgntime{$\Theta\left(n\lg n\right)$}
+\newcommand\nsquaredtime{$\Theta\left(n^2\right)$}
+
+\newcommand\titlenoduedate{%
+\thispagestyle{empty}%
+\cfoot{\thepage\ of \pageref{LastPage}}%
+\lhead{\coursetitle}%
+\chead{\shorttitle}%
+\rhead{\shortcourseterm}%
+\noindent{\Huge\coursetitle\\[3pt]\catalognum\\[3pt]}%
+\emph{\large\courseterm}\\[3pt]%
+}
+
+\newcommand\titlewithduedate{%
+\thispagestyle{empty}%
+\cfoot{\thepage\ of \pageref{LastPage}}%
+\lhead{\coursetitle}%
+\chead{\shorttitle}%
+\rhead{\shortcourseterm}%
+\noindent{\Huge\coursetitle\\[3pt]\catalognum\\[3pt]}%
+\emph{\large\courseterm}\\[3pt]%
+\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}\\
+{\large\doctitle}\\
+\emph{\duedate}\\
+}
+
+\pagestyle{fancy}
