@@ -1,0 +1,101 @@
+\item\problemnumber{CLRS Problem 4}{4}{}{-}{}
+This problem develops properties of the Fibonacci numbers, which are defined by
+recurrence (3.22). We shall use the technique of generating functions to solve
+the Fibonacci recurrence. Define the \emph{generating function} (or \emph{formal
+power series}) $\mathscr{F}$ as
+\begin{align*}
+\mathscr{F}(z)&=\sum_{i=0}^\infty F_iz^i\\
+&=0+z+z^2+2z^3+3z^4+5z^5+8z^6+13z^7+21z^8+\cdots
+\end{align*}
+where $F_i$ is the $i^{\text{th}}$ Fibonacci number.
+\begin{list}{\textbf{\alph{enumii}}}{\usecounter{enumii}}
+\item Show that $\mathscr{F}(z)=z+z\mathscr{F}(z)+z^2\mathscr{F}(z)$.
+\item Show that
+\begin{align*}
+\mathscr{F}(z)&=\frac{z}{1-z-z^2}\\
+&=\frac{z}{\left(1-\phi z\right)\left(1-\hat\phi z\right)}\\
+&=\frac{1}{\sqrt{5}}\left(\frac{1}{1-\phi z}-\frac{1}{1-\hat\phi z}\right)\\
+\end{align*}
+where $$\phi=\frac{1+\sqrt{5}}{2}\approx1.61803\ldots$$\\
+and $$\hat\phi=\frac{1-\sqrt{5}}{2}\approx-0.61803\ldots$$\\
+\item Show that $$\mathscr{F}(z)=\sum_{i=0}^\infty\frac{1}{\sqrt{5}}\left(
+\phi^i-\hat\phi^i\right)z^i$$
+\item Use part (c) to prove that $F_i=\phi^i/\sqrt{5}$ for $i\ge 0$, rounded
+to the nearest integer. \emph{Hint\/}: Observe that $\left^^7c\hat\phi\right^^7c
+<1$.
+\end{list}
+\vskip12pt
+\ifanswers
+\textcolor{blue}{
+\textbf{Answer:}\\
+\begin{list}{\textbf{\alph{enumii}}}{\usecounter{enumii}}
+\item\begin{align*}
+z+z\mathscr{F}(z)+z^2\mathscr{F}(z)&=z+z\sum_{i=0}^\infty F_iz^i+z^2\sum_{i=0}
+^\infty F_iz^i\\
+&=z+\sum_{i=1}^\infty F_{i-1}z^i+\sum_{i=2}^\infty F_{i-2}z^i\\
+&=z+F_0z+\sum_{i=2}^\infty F_{i-1}z^i+\sum_{i=2}^\infty F_{i-2}z^i\\
+&=F_0z+z+\sum_{i=2}^\infty \left(F_{i-1}+F_{i-2}\right)z^i\\
+&=F_0z+F_1z+\sum_{i=2}^\infty F_iz^i\\
+&=\sum_{i=0}^\infty F_iz^i\\
+&=\mathscr{F}(z)\\
+\end{align*}\noindent
+Note that the fifth line follows from $F_1=1$ and $F_i=F_{i-1}+F_{i-2}$
+for all $i>1$.
+\item\begin{align*}
+\mathscr{F}(z)&=z+z\mathscr{F}(z)+z^2\mathscr{F}(z)\\
+\mathscr{F}(z)-z\mathscr{F}(z)-z^2\mathscr{F}(z)&=z\\
+\left(1-z-z^2\right)\mathscr{F}(z)&=z\\
+\mathscr{F}(z)&=\frac{z}{1-z-z^2}\\
+\end{align*}\vskip12pt\noindent
+Next, examine the factoring of the denominator:
+\begin{align*}
+\left(1-\phi z\right)\left(1-\hat\phi z\right)&=1-\hat\phi z-\phi z+\phi\hat\phi
+z^2\\
+&=1-z\left(\frac{1-\sqrt{5}}{2}+\frac{1+\sqrt{5}}{2}\right)+z^2\left(\frac{1+
+\sqrt{5}}{2}\right)\left(\frac{1-\sqrt{5}}{2}\right)\\
+&=1-z\left(\frac{1}{2}+\frac{1}{2}+\frac{\sqrt{5}}{2}-\frac{\sqrt{5}}{2}\right)+
+z^2\left(\frac{-4}{4}\right)\\
+&=1-z-z^2\\
+\end{align*}\vskip12pt\noindent
+Finally, split the denominator using partial fractional decomposition:
+\begin{align*}
+\frac{z}{\left(1-\phi z\right)\left(1-\hat\phi z\right)}&=\frac{a}{1-\phi z}+
+\frac{b}{1-\hat\phi z}\\
+a\left(1-\hat\phi z\right)+b\left(1-\phi z\right)&=z\\
+a-a\hat\phi z+b-b\phi z&=z\\
+\left(a+b\right)+z\left(-a\hat\phi-b\phi\right)&=z\\
+\end{align*}\noindent
+This leads to two equations in two unknowns: $a+b=0$ and $-a\hat\phi-b\phi=1$.
+Substituting $b=-a$ into the second equation yields:
+\begin{align*}
+-a\hat\phi-b\phi&=1\\
+-a\hat\phi+a\phi&=1\\
+a\left(\frac{1+\sqrt{5}}{2}-\frac{1-\sqrt{5}}{2}\right)&=1\\
+a\left(\frac{1}{2}+\frac{\sqrt{5}}{2}-\frac{1}{2}+\frac{\sqrt{5}}{2}\right)&=1\\
+a\sqrt{5}&=1\\
+a&=\frac{1}{\sqrt{5}}\\
+\end{align*}\noindent
+Thus, $b=-1/\sqrt{5}$ and $$\frac{z}{\left(1-\phi z\right)\left(1-\hat\phi z
+\right)}=\frac{1}{\sqrt{5}}\left(\frac{1}{1-\phi z}-\frac{1}{1-\hat\phi z}
+\right)$$
+\item Using the sum of an infinite geometric series, we have $$\sum_{i=0}^\infty
+\left(\phi z\right)^i=\frac{1}{1-\phi z}$$\\ Similarly, $$\sum_{i=0}^\infty
+\left(\hat\phi z\right)^i=\frac{1}{1-\hat\phi z}$$\\ Thus,
+\begin{align*}
+\frac{1}{\sqrt{5}}\left(\frac{1}{1-\phi z}-\frac{1}{1-\hat\phi z}\right)&=
+\frac{1}{\sqrt{5}}\left(\sum_{i=0}^\infty\left(\phi z\right)^i-\sum_{i=0}
+^\infty\left(\hat\phi z\right)^i\right)\\
+&=\sum_{i=0}^\infty\frac{1}{\sqrt{5}}\left(\phi^i-\hat\phi^i\right)z^i\\
+\mathscr{F}(z)&=\sum_{i=0}^\infty\frac{1}{\sqrt{5}}\left(\phi^i-\hat\phi^i
+\right)z^i\\
+\end{align*}
+\item From the previous result and the definition of $\mathscr{F}(z)$, we have
+$$F_i=\frac{1}{\sqrt{5}}\left(\phi^i-\hat\phi^i\right)$$\\ Since $F_i$ is an
+integer and $\left|\hat\phi^i\right|\le1$, it must be the case that $\left|F_i-
+\phi^i/\sqrt{5}\right|<0.5$ since $\left|\hat\phi^i/\sqrt{5}\right|<0.5$. Thus,
+rounding $\phi^i/\sqrt{5}$ to the nearest integer --- that is, $\left\lfloor
+\phi^i/\sqrt{5}+0.5\right\rfloor$ --- must yield $F_i$.
+\end{list}
+}
+\newpage
+\fi
