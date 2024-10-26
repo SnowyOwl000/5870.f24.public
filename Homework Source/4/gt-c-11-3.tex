@@ -1,0 +1,42 @@
+\item\problemnumber{GT C}{11}{3}{-}{.}
+There is a sorting algorithm, ``Stooge-sort,'' which is named after the comedy
+team, ``The Three Stooges.'' If the input size, $n$, is $1$ or $2$, then the
+algorithm sorts the input immediately. Otherwise, it recursively sorts the first
+$2n/3$ elements, then the last $2n/3$ elements, and then the first $2n/3$
+elements again. The details are shown in the following algorithm. Show that
+Stooge-sort is correct and characterize the running time, $T(n)$, for
+Stooge-sort, using a recurrence equation, and use the master theorem to
+determine an asymptotic bound for $T(n)$.\\[12pt]
+\begin{algorithm}[H]
+    \caption{Stooge Sort}
+    \begin{algorithmic}[1]
+        \Procedure{StoogeSort}{${\bf Comparable\ }A[],{\bf int\ }low,
+            {\bf int\ }high$}
+            \State $n\gets high-low+1$
+            \Comment\textcolor{blue}{Determine size of list}
+            \Statex
+            \If{$n=2$}
+                \If{$A[low]>A[high]$}
+                    \State {\sc Swap}$(A[low],A[high])$
+                \EndIf
+            \ElsIf{$n>2$}
+                \State $m\gets\lfloor n/3\rfloor$
+                \Comment\textcolor{blue}{Calculate overlap}
+                \Statex
+                \State {\sc StoogeSort}$(A,low,high-m)$
+                \Comment\textcolor{blue}{Recursively sort first part}
+                \State {\sc StoogeSort}$(A,low+m,high)$
+                \Comment\textcolor{blue}{Recursively sort second part}
+                \State {\sc StoogeSort}$(A,low,high-m)$
+                \Comment\textcolor{blue}{Recursively sort first part again}
+            \EndIf
+        \EndProcedure
+    \end{algorithmic}
+\end{algorithm}
+\ifanswers
+\textcolor{blue}{
+\textbf{Answer:}\\[6pt]
+Answer goes here
+}
+\newpage
+\fi

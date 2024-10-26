@@ -1,0 +1,29 @@
+\item\problemnumber{GT A}{11}{3}{-}{.}
+In some multi-objective optimization problems (such as that exemplified by the
+choosing of hotels based on the sizes of their pools and quality scores of their
+restaurants), we may have different kinds of constraints involving the variables
+instead of the desire to avoid points dominated by others. Suppose, for example,
+that we have a two-variable optimization problem where we have a set, $C$, of
+constraints of the form $$y\ge m_ix+b_i$$ for real numbers $m_i$ and $b_i$, for
+$i=1,2,\ldots,n$. In such a case, we would like to restrict our attention to
+points that satisfy all the linear inequality constraints in $C$. One way to
+address this desire is to construct the \emph{upper envelope} for $C$, which is
+a representation of the function $f(x)$, defined as $$f(x)=\max_{1\le i\le n}
+\lbrace m_ix+b_i\rbrace$$ where the $(m_i,b_i)$ pairs are from the inequalities
+in $C$. Equivalently, the upper envelope is a representation of the part of the
+plane determined by the intersection of all the halfplanes determined by the
+inequalities in $C$. If we consider how this function behaves as $x$ goes from
+$-\infty$ to $+\infty$, we note that each inequality in $C$ can appear at most
+once during this process. Thus, we can represent $f$ in terms of a set $S=
+\lbrace(a_1,b_i,i_1),(a_2,b_2,i_2),\ldots,(a_k,b_k,i_k)\rbrace$, such that each
+triple $(a_j,b_j,i_j)\in S$ represents the fact that interval $[a_j,b_j]$ is a
+maximal interval such that $f(x)=m_{i_j}x+b_{i_j}$. Describe a $\Theta(n\log
+n)$-time algorithm for computing such a representation $S$ of the upper envelope
+of the linear inequalities in $C$.\\[12pt]
+\ifanswers
+\textcolor{blue}{
+\textbf{Answer:}\\[6pt]
+Answer goes here
+}
+\newpage
+\fi

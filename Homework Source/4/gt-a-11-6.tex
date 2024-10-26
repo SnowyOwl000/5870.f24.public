@@ -1,0 +1,23 @@
+\item\problemnumber{GT A}{11}{6}{-}{.}
+Suppose you have a geometric description of the buildings of Manhattan and you
+would like to build a representation of the New York skyline. That is, suppose
+you are given a description of a set of rectangles, all of which have one of
+their sides on the $x$-axis, and you would like to build a representation of the
+union of all these rectangles. Formally, since each rectangle has a side on the
+$x$-axis, you can assume that you are given a set, $S=\lbrace[a_1,b_1],[a_2,
+b_2],\ldots,[a_n,b_n]\rbrace$ of sub-intervals in the interval $[0,1]$, with
+$0\le a_i<b_i\le1$ for $i=1,2,\ldots,n$, such that there is an associated height
+$h_i$ for each interval $[a_i,b_i]$ in $S$. The \emph{skyline} of $S$ is defined
+to be a list of pairs $[(x_0,c_0),(x_1,c_1),(x_2,c_2),\ldots,(x_m,c_m),(x_{m+1},
+0)]$, with $x_0=0$ and $x_{m+1}=1$, and ordered by $x_i$ values, such that each
+subinterval $[x_i,x_{i+1}]$ is the maximal subinterval that has a single highest
+interval, which is at height $c_i$, in $S$, containing $[x_i,x_{i+1}]$, for
+$i=0,1,\ldots,m$. Design a $\Theta(n\log n)$-time algorithm for computing the
+skyline of $S$.\\[12pt]
+\ifanswers
+\textcolor{blue}{
+\textbf{Answer:}\\[6pt]
+Answer goes here
+}
+\newpage
+\fi
